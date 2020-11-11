@@ -1,0 +1,219 @@
+﻿@model IEnumerable<Recruitment.Domain.Entities.Job>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div style="display:flex; flex-direction:column; display: -webkit-flex;">
+    <div style="display:flex; flex-direction:column; align-content:center;">
+        <div>
+            <h1>Welcome to RECRUIT</h1>
+        </div>       
+        <div>
+          
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <b>Search By</b>
+                @Html.RadioButton("categories", "Title", true)@: Title
+                @Html.RadioButton("categories", "Company")@: Company
+                @Html.RadioButton("categories", "Location")@:Location<br />
+                @Html.TextBox("search")
+                <input type="submit" value="Search" />
+            }           
+        </div>
+        <div class="btn btn-default" style="background-color:aqua;">
+            Get Started 
+        </div>
+    </div>
+
+    <div style="width:60vw;">
+        <h2>Latest Jobs</h2>
+    @if (Model.Count() == 0)
+    {
+    <p> No match found? Search again.</p>
+    }
+    else
+    {
+        <table class="table" border="1">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Level)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YearsExperienced)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearsExperienced)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    }
+    </div>
+
+    <div>
+        <h2>Get Started</h2>
+        <div>
+            <div>
+                <p>1</p>
+                <p>Create Account</p>
+                <div class="btn bt-primary">
+                   @Html.ActionLink("Go","Register","Account", "",new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div>
+                <p>2</p>
+                <p>Log In </p>
+                <div class="btn bt-primary">
+                    @Html.ActionLink("Go","Login", "Account", "",new { @class = "btn btn-primary" })
+                </div>
+            </div>
+            <div>
+                <p>3</p>
+                <p>Search for Job</p>
+                <div class="btn bt-primary">
+                    Go
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container feature-section">
+            <div class="text-center ">
+                <h2><b>FAQ</b></h2>
+                <p>Here are some of our FAQs. If you have any other question you'd like answered please feel free to email us</p>
+
+            </div>
+
+            <div class="faq">
+                <div class="accordion" id="accordionExample">
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item" id="headingOne">
+                            <div type="list-group-item" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="row">
+                                    <div class="col-md-6" style="text-align: left;">
+                                        <b> What is Bookmark?</b>
+                                    </div>
+                                    <div class="col-md-6" style="text-align: right;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path style="color: #5267DF;" fill="none" stroke="currentColor" stroke-width="3" d="M1 1l8 8 8-8"></path></svg>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Bookmark is a clean and simple interface to organize your favourite websites
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" id="headingOne">
+                            <div type="list-group-item" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="row">
+                                    <div class="col-md-8" style="text-align: left;">
+                                        <b>How can I request a new browser?</b>
+                                    </div>
+                                    <div class="col-md-4" style="text-align: right;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path style="color: #5267DF;" fill="none" stroke="currentColor" stroke-width="3" d="M1 1l8 8 8-8"></path></svg>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="collapseTwo" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Send us an email at support@bookmark.com
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" id="headingOne">
+                            <div type="list-group-item" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+
+                                <div class="row">
+                                    <div class="col-md-8" style="text-align: left;">
+                                        <b>Is there a mobile app?</b>
+                                    </div>
+                                    <div class="col-md-4" style="text-align: right;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path style="color: #5267DF;" fill="none" stroke="currentColor" stroke-width="3" d="M1 1l8 8 8-8"></path></svg>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="collapseThree" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Yes, there is a mobile app. Download your mobile app from Google Pslay store and Apple Store
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item" id="headingOne">
+                            <div type="list-group-item" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+
+                                <div class="row">
+                                    <div class="col-md-9" style="text-align: left;">
+                                        <b>What about other chromium browsers?</b>
+                                    </div>
+                                    <div class="col-md-3" style="text-align: right;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12"><path style="color: #5267DF;" fill="none" stroke="currentColor" stroke-width="3" d="M1 1l8 8 8-8"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseFour" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    It will be available for chromium browsers on our next update
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
+            </div>      
+        </div>
+
+    </div>
+    </div>

@@ -1,0 +1,128 @@
+﻿
+.container-nav {
+    margin-top: 20px;
+}
+
+.login-btn {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 30px !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+.nav-btn {
+    font-size: 14px;
+    font-weight: 500;
+    padding-right: 30px !important;
+}
+
+.hamburger {
+    margin-bottom: 3px;
+}
+
+.container1 {
+    margin-top: 70px;
+    margin-bottom: 80px;
+    padding-top: 50px;
+}
+
+h1 {
+    font-weight: bold;
+    padding-top: 110px;
+    font-size: 50px;
+}
+
+p {
+    color: grey;
+}
+
+.chrome-btn {
+    font-weight: 50px;
+    color: white;
+    background-color: #5267DF;
+    /* background-color: rgb(62, 62, 231); */
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19);
+}
+
+.firefox-btn {
+    font-weight: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19);
+    margin-left: 10px;
+}
+
+.feature-section {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+    margin-bottom: 50px;
+}
+
+.browser-section {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(autofil, 30px);
+    grid-template-rows: 1;
+}
+
+.container-footer {
+    background-color: rgb(3, 10, 54);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container-above-footer {
+    background-color: #5267DF;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: white !important;
+    margin-top: 100px;
+}
+
+.foot-link {
+    color: white;
+    padding-left: 30px;
+    font-size: 12px;
+}
+
+.foot-twitter {
+    padding-left: 20px;
+}
+
+.foot-facebook {
+    padding-left: 90%;
+}
+
+.foot-social {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.faq {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 30em;
+}
+
+.browsers {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.active {
+    color: black;
+    font-weight: 700;
+}
