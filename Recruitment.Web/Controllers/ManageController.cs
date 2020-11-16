@@ -66,6 +66,7 @@ namespace Recruitment.Web.Controllers
             var userId = User.Identity.GetUserId();
             if (User.IsInRole("Admin"))
             {
+               
                 return RedirectToAction("DashBoard", "Admin");
             }
             else
