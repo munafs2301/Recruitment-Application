@@ -26,12 +26,24 @@ namespace Recruitment.Web.Models
         {
         }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Applicant> Applicants { get; set; }
 
-        //public DbSet<Job> Jobs { get; set; }
-        //public DbSet<Applicant> Applicants { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    // configures one-to-many relationship
+        //    modelBuilder.Entity<Applicant>()
+        //        .HasRequired<Job>(s => s.AppliedJob)
+        //        .WithMany(g => g.Applicants)
+        //        .HasForeignKey<int>(s => s.JobId);
+        //}
+   
+
+        public static ApplicationDbContext Create()
+            {
+                return new ApplicationDbContext();
+            }
+       
+        
     }
 }

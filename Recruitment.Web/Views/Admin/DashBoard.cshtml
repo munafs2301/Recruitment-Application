@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+}
+
+<h1 style="color: #120227; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="text-center">Admin Dashboard</h1>
+<hr style="color: #120227;"/>
+<div style="display:flex; justify-content: space-around; ">
+    <div class="card text-center" style="width:25rem;  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px;">
+        <img src="~/Images/jobs.jpg" class="card-img-top img-responsive" alt="...">
+        <div class="card-body" style="margin-bottom:20px;">
+            <h4 class="card-title"><i class="fa fa-briefcase" aria-hidden="true"> Jobs</i></h4>
+            @Html.ActionLink("View", "Jobs", null, htmlAttributes: new { @class = "btn ", @style = "color:white; background-color:#120227;" })
+        </div>
+    </div>
+    <div class="card text-center" style="width:25rem; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px;">
+        <img src="~/Images/applicants.jpg" class="card-img-top img-responsive"style="border-radius:10px" alt="...">
+        <div class="card-body" style="margin-top:50px;">
+            <h4 class="card-title"><i class="fa fa-id-card" aria-hidden="true"> Submitted Applications</i> </h4>
+            @Html.ActionLink("View", "Applications", null, htmlAttributes: new { @class = "btn" , @style = "color:white; background-color:#120227;" })
+        </div>
+    </div>
+</div>
+

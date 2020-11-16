@@ -43,7 +43,8 @@ namespace Recruitment.Web.Services
             }
                 );
 
-            kernel.Bind<IJobRepository>().ToConstant(mock.Object);
+            kernel.Bind<IJobRepository>().To<JobRepo>();
+            kernel.Bind<IApplicantRepository>().To<ApplicantRepo>();
         }
     }
 }

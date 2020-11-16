@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Recruitment.Domain.Entities.Job>
+
+
+@{
+    ViewBag.Title = "AllJobs";
+}
+
+    <h2 class="text-center" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" >All Jobs</h2>
+
+<div style=" background-color: #f8d8f8; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); border: 1px solid grey; border-radius: 10px; display:grid; grid-template-columns: 1fr 1fr; grid-gap: 20px;">
+    @foreach (var item in Model)
+    {
+       @Html.Partial("JobDetails", item)
+    }
+</div>
+@*<div style=" background-color: #f8d8f8; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175);; border: 1px solid grey; border-radius: 10px; display: flex; flex-direction: row; align-items: center; padding: 30px; margin-bottom: 0%; ">
+    @foreach (var item in Model)
+    {
+       @Html.Partial("JobDetails", item)
+    }
+</div>*@
+
+

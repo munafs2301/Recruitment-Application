@@ -1,138 +1,98 @@
 ﻿@model IEnumerable<Recruitment.Domain.Entities.Job>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
-    <div style="display:flex; flex-direction:column; display: -webkit-flex;">
-    <div style="display:flex; flex-direction:column; align-content:center;">
-        <div>
+<div style=" display: flex; flex-direction: column; display: -webkit-flex; justify-content: space-between">
+    <div class="text-center" style=" box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
             <h1>Welcome to RECRUIT</h1>
-        </div>       
-        <div>
-          
+        </div>
+        <div style="padding:10px;" >
             @using (Html.BeginForm("Index", "Home", FormMethod.Get))
             {
-                <b>Search By</b>
-                @Html.RadioButton("categories", "Title", true)@: Title
-                @Html.RadioButton("categories", "Company")@: Company
-                @Html.RadioButton("categories", "Location")@:Location<br />
-                @Html.TextBox("search")
-                <input type="submit" value="Search" />
-            }           
-        </div>
-        <div class="btn btn-default" style="background-color:aqua;">
-            Get Started 
-        </div>
-    </div>
+                <div class="form-group">
+                        <span class="control-label ">
+                            <b>Search By:</b>
+                        </span>
+                        <span>
+                            @Html.RadioButton("categories", "Title", true)Title
+                            @Html.RadioButton("categories", "Company") Company
+                            @Html.RadioButton("categories", "Location")Location<br />
+                        </span>
+                </div>
+               
+                <div class="form-group">
+                    <span >
+                        @Html.TextBox("search", null, htmlAttributes: new { @class = ""})
+                    </span>
+                    <span class="control-label">
+                        <input type="submit" value="Search" class="btn btn-default " />                      
+                    </span>
+                </div>
 
-    <div style="width:60vw;">
-        <h2>Latest Jobs</h2>
-    @if (Model.Count() == 0)
-    {
-    <p> No match found? Search again.</p>
-    }
-    else
-    {
-        <table class="table" border="1">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Level)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Location)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Salary)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Company)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.YearsExperienced)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Level)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Location)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Salary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Company)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.YearsExperienced)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Type)
-                    </td>
-
-                </tr>
             }
-
-        </table>
-    }
+        </div>
+        <div>
+            <a href="#get-started" class="btn btn-default" style="background-color:#120227; color:white;">Get Started</a>
+        </div>
     </div>
 
-    <div>
-        <h2>Get Started</h2>
+    <div style=" box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; " class="text-center">
+        <h2 style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><b>Latest Jobs</b></h2>
         <div>
+            @if (Model.Count() == 0)
+            {
+                <p> No match found? Search again.</p>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    @Html.Partial("JobDetails", item)
+                }
+
+            }
+        </div>
+    </div>
+
+    <div id="get-started" class="text-center" style="margin-top: 20px; border-radius: 10px; border: 1px dashed pink; ">
+        <h2 style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><b>Get Started</b> </h2>
+        <div style="display:flex; justify-content:space-evenly;">
             <div>
                 <p>1</p>
                 <p>Create Account</p>
-                <div class="btn bt-primary">
-                   @Html.ActionLink("Go","Register","Account", "",new { @class = "btn btn-primary" })
+                <div style="background-color: #120227; color: white;">
+                    @Html.ActionLink("Go", "Register", "Account", "", new { @class = "btn", @style = "color: white;" })
                 </div>
             </div>
             <div>
                 <p>2</p>
                 <p>Log In </p>
-                <div class="btn bt-primary">
-                    @Html.ActionLink("Go","Login", "Account", "",new { @class = "btn btn-primary" })
+                <div  style="background-color: #120227; color: white;">
+                    @Html.ActionLink("Go", "Login", "Account", "", new { @class = "btn", @style = "color: white;" })
                 </div>
             </div>
             <div>
                 <p>3</p>
                 <p>Search for Job</p>
-                <div class="btn bt-primary">
-                    Go
+                <div style="background-color: #120227; color: white;">
+                    @Html.ActionLink("Go", "AllJobs", "Home", "", new { @class = "btn", @style = "color: white;" })
                 </div>
             </div>
         </div>
     </div>
 
-    <div>
+    @*<div style=" border: 1px dashed pink; border-radius:10px; margin-top: 20px; ">
         <div class="container feature-section">
             <div class="text-center ">
-                <h2><b>FAQ</b></h2>
+                <h2 style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><b>FAQ</b></h2>
                 <p>Here are some of our FAQs. If you have any other question you'd like answered please feel free to email us</p>
 
             </div>
 
-            <div class="faq">
+            <div class="faq container-above-footer text-center" >
                 <div class="accordion" id="accordionExample">
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item"></li>
@@ -212,8 +172,8 @@
                         <li class="list-group-item"></li>
                     </ul>
                 </div>
-            </div>      
+            </div>
         </div>
 
-    </div>
-    </div>
+    </div>*@
+</div>

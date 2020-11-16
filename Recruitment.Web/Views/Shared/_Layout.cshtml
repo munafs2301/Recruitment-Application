@@ -1,5 +1,63 @@
 ﻿<!DOCTYPE html>
+
 <html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/recruit-logo.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Staatliches" rel="stylesheet">
+    <title>@ViewBag.Title: RECRUIT</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white; border-bottom-color:white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span >
+                    <span><img src="~/Images/recruit-logo.png" alt="R" width="80" height="100"  style=""  class="navbar-brand" /></span>
+                    <b> @Html.ActionLink("RECRUIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand",   @style = "weight: bolder; color: purple; size: 60px; " }) </b>
+                </span>
+               
+            </div>
+            <div id="nav-links" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" >
+                    <li class="navli">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "", @style = "color: black; size: 60px; " })</li>
+                    <li class="navli">@Html.ActionLink("All Jobs", "AllJobs", "Home", null, new { @class = "", @style = "color: black; size: 60px; " })</li>
+                    <li class="navli">@Html.ActionLink("Admin", "DashBoard", "Admin", null, new { @class = "", @style = "color: black; size: 60px; " })</li>
+                    <li class="navli">@Html.ActionLink("Categories", "About", "Home", null, new { @class = "", @style = "color: black; size: 60px; " })</li>
+                    <li class="navli">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "", @style = "color: black; size: 60px; " })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content" >
+        @RenderBody()
+    </div>
+   
+    <hr />
+    <footer class="text-center navbar-fixed-bottom" style=" box-shadow: 5px -6px 12px rgba(0, 0, 0, 0.175); background-color: #120227; padding-top: 10px; margin: 0;">
+        <p style="color:white;">&copy; @DateTime.Now.Year - RECRUIT</p>        
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@*<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +77,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("RECRUIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("RECRUIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand " })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav text-center">
@@ -51,50 +109,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
-
-@*<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("RECRUIT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

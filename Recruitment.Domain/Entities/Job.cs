@@ -18,5 +18,8 @@ namespace Recruitment.Domain.Entities
         public string Company { get; set; }
         public string YearsExperienced { get; set; }
         public JobType Type { get; set; }
+
+        //public ICollection<Applicant> Applicants { get; set; }
+
     }
 }

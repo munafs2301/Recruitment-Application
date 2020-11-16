@@ -61,12 +61,19 @@
     <Reference Include="Ninject.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.21.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\SendGrid.9.21.1\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="StarkbankEcdsa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\starkbank-ecdsa.1.2.0\lib\net452\StarkbankEcdsa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -195,16 +202,51 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\ApplicantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011112232014_InitialCreate.cs" />
+    <Compile Include="Migrations\202011112232014_InitialCreate.Designer.cs">
+      <DependentUpon>202011112232014_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011121609061_tables.cs" />
+    <Compile Include="Migrations\202011121609061_tables.Designer.cs">
+      <DependentUpon>202011121609061_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011121739469_reations.cs" />
+    <Compile Include="Migrations\202011121739469_reations.Designer.cs">
+      <DependentUpon>202011121739469_reations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011140900573_removedFileData.cs" />
+    <Compile Include="Migrations\202011140900573_removedFileData.Designer.cs">
+      <DependentUpon>202011140900573_removedFileData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011141457109_addedImage.cs" />
+    <Compile Include="Migrations\202011141457109_addedImage.Designer.cs">
+      <DependentUpon>202011141457109_addedImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011142057544_imageData.cs" />
+    <Compile Include="Migrations\202011142057544_imageData.Designer.cs">
+      <DependentUpon>202011142057544_imageData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011142216174_fileDataRemoval.cs" />
+    <Compile Include="Migrations\202011142216174_fileDataRemoval.Designer.cs">
+      <DependentUpon>202011142216174_fileDataRemoval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationViewModel.cs" />
+    <Compile Include="Models\JobList.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplicantRepo.cs" />
+    <Compile Include="Services\Email.cs" />
+    <Compile Include="Services\JobRepo.cs" />
     <Compile Include="Services\NinjectDependencyResolver.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -214,6 +256,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Layout.css" />
+    <Content Include="Images\applicants.jpg" />
+    <Content Include="Images\jobs.jpg" />
+    <Content Include="Images\recruit-logo.png" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Content\mobile.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\widescreen.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -265,11 +314,25 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AllJobs.cshtml" />
+    <Content Include="Views\Applicants\Delete.cshtml" />
+    <Content Include="Views\Applicants\Details.cshtml" />
+    <Content Include="Views\Applicants\Edit.cshtml" />
+    <Content Include="Views\Applicants\Index.cshtml" />
+    <Content Include="Views\Shared\JobDetails.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Applicants\Create.cshtml" />
+    <Content Include="Views\Home\HOME.cshtml" />
+    <Content Include="Views\Admin\Applications.cshtml" />
+    <Content Include="Views\Admin\Jobs.cshtml" />
+    <Content Include="Views\Admin\DashBoard.cshtml" />
+    <Content Include="Views\Shared\_LandingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Applicant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -289,6 +352,29 @@
       <Project>{b0a2315d-8076-4263-9e0a-419e6768c3ed}</Project>
       <Name>Recruitment.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011112232014_InitialCreate.resx">
+      <DependentUpon>202011112232014_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011121609061_tables.resx">
+      <DependentUpon>202011121609061_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011121739469_reations.resx">
+      <DependentUpon>202011121739469_reations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011140900573_removedFileData.resx">
+      <DependentUpon>202011140900573_removedFileData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011141457109_addedImage.resx">
+      <DependentUpon>202011141457109_addedImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011142057544_imageData.resx">
+      <DependentUpon>202011142057544_imageData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011142216174_fileDataRemoval.resx">
+      <DependentUpon>202011142216174_fileDataRemoval.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

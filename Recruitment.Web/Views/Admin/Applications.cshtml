@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Recruitment.Domain.Entities.Applicant>
+
+@{
+    ViewBag.Title = "Applications";
+}
+
+<h2>Applications</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "Applicants", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" }) |
+                @using (Html.BeginForm("Reject", "Admin"))
+                {
+                <div >
+                    @Html.HiddenFor(Model => item.JobTitle)
+                    <input type="submit" class="btn btn-danger" value="Reject" />
+                </div>
+                }
+                @Html.ActionLink("Accept", "Accept", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "DashBoard", null, htmlAttributes: new { @class = "btn btn-primary" })
+</div>

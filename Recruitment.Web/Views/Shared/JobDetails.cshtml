@@ -1,0 +1,35 @@
+﻿@model Recruitment.Domain.Entities.Job
+
+<div style=" box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); background-color:white; border: 1px dotted pink; border-radius: 20px; margin: 30px;padding: 20px; " class="">
+    <h4><b>@Model.Title</b></h4>
+    <p>@Model.Company</p>
+    <p>@Model.Level Level</p>
+    <p>@Model.Location</p>
+    <p>@Model.Salary.ToString("c")</p>
+    <p>@Model.YearsExperienced years of experience</p>
+    <p>@Model.Type</p>
+    <hr />
+    <p>@Model.Description</p>
+    <hr />
+
+    <div style="background-color:#120227;" class="btn-sm text-center">
+
+        @Html.ActionLink("Apply", "Create", "Applicants",new { id = Model.JobId, title = Model.Title}, htmlAttributes: new { @class = "btn", @style = "color:white;" } ) 
+    </div>
+</div>
+@*<div style=" box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); background-color:white; border: 1px dotted pink; border-radius: 20px; margin: 30px; padding: 20px;" class="text-center">
+    <h4><b>@Model.Title</b></h4>
+    <p>@Model.Company</p>
+    <p>@Model.Level Level</p>
+    <p>@Model.Location</p>
+    <p>@Model.Salary.ToString("c")</p>
+    <p>@Model.YearsExperienced years of experience</p>
+    <p>@Model.Type</p>
+    <hr />
+    <p>@Model.Description</p>
+    <hr />
+
+    <div style="background-color:#120227;" class="btn-sm">
+        @Html.ActionLink("Apply", "Create", "Applicants",new { id = Model.JobId, title = Model.Title}, htmlAttributes: new { @class = "btn", @style = "color:white;" } ) 
+    </div>
+</div>*@
