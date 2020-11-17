@@ -34,11 +34,13 @@ namespace Recruitment.Domain.Entities
         [Required(ErrorMessage = "Please enter your home address")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Enter your phone number")]        
+        [Required(ErrorMessage = "Enter your phone number")]
+        [Display(Name = "Phone Number")]
         public Int64 PhoneNumber { get; set; }
 
         public int JobId { get; set; }
 
+        [Display(Name = "Job Title")]
         public string JobTitle { get; set; }
 
         //public byte[] Image { get; set; }

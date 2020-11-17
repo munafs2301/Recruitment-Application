@@ -14,6 +14,7 @@ using Recruitment.Web.Services;
 
 namespace Recruitment.Web.Controllers
 {
+    [Authorize]
     public class ApplicantsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -87,7 +88,8 @@ namespace Recruitment.Web.Controllers
                 string messageSubject = $"Application Submission for {application.JobTitle}";
                 string messageBody = $"Hello Admin,\n A new application submitted for {application.JobTitle}";
                 Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
-                return RedirectToAction("Index");
+                TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
+                return RedirectToAction("Index", "Manage");
             }
 
             return View(application);

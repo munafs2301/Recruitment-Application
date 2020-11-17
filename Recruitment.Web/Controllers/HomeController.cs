@@ -22,7 +22,7 @@ namespace Recruitment.Web.Controllers
         public ActionResult Index(string categories, string search)
         {
             var category = categories;
-            IEnumerable<Job> model = repo.Jobs.Take(3);
+            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(3);
             switch (category)
             {
                 case "Title":
