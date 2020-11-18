@@ -56,11 +56,12 @@ namespace Recruitment.Web.Controllers
             {
                 db.Jobs.Add(job);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Jobs");
             }
 
             return View(job);
         }
+        
 
         // GET: Admin/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -88,7 +89,7 @@ namespace Recruitment.Web.Controllers
             {
                 db.Entry(job).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Jobs");
             }
             return View(job);
         }
@@ -116,7 +117,7 @@ namespace Recruitment.Web.Controllers
             Job job = await db.Jobs.FindAsync(id);
             db.Jobs.Remove(job);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Jobs");
         }
 
         public async Task<ActionResult> Applications()

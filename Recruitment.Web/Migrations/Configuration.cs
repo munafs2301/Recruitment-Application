@@ -49,10 +49,10 @@ namespace Recruitment.Web.Migrations
             }
                         
             // creating Creating Employee role   
-            if (!roleManager.RoleExists("User"))
+            if (!roleManager.RoleExists("Customer"))
             {
                 var role = new IdentityRole();
-                role.Name = "User";
+                role.Name = "Customer";
                 roleManager.Create(role);
 
             }

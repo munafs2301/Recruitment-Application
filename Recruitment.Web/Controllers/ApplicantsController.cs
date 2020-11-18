@@ -16,9 +16,9 @@ using Recruitment.Web.Services;
 namespace Recruitment.Web.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "Customer")]
     public class ApplicantsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IApplicantRepository arepo;
   
         public ApplicantsController(IApplicantRepository repo)
@@ -83,7 +83,7 @@ namespace Recruitment.Web.Controllers
                 //    application.Image = br.ReadBytes(image.ContentLength);
                 //}
                 //application.ImageContentType = image.ContentType;
-                var status = arepo.Create(application);
+                var status = await arepo.Create(application);
                 if (true)
                 {
                     TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
