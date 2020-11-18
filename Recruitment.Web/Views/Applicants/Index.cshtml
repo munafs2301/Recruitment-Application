@@ -25,8 +25,8 @@
             @Html.DisplayFor(modelItem => item.JobTitle)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }) 
+            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-default"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" })
         </td>
     </tr>
 }

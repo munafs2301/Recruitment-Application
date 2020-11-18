@@ -22,17 +22,26 @@ namespace Recruitment.Web.Services
 
         }
 
-        public async Task<string> Create(int? jobId, Applicant applicant)
-        {
-            Job selectedJob = db.Jobs.Where(m => m.JobId == jobId).FirstOrDefault();
-            applicant.JobId = selectedJob.JobId;
-            applicant.JobTitle = selectedJob.Title;
+        public async Task<bool> Create(Applicant applicant)
+        {          
             db.Applicants.Add(applicant);
             await db.SaveChangesAsync();
-            return "Application Submitted";
+            string messageSubject = $"Application Submission for {applicant.JobTitle}";
+            string messageBody = $"Hello Admin,\n A new application submitted for {applicant.JobTitle}";
+            Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
+            return true;
         }
 
-        public void Edit(Applicant applicant)
+        public async Task<Applicant> GetJobDetails(int? id)
+        {
+            Applicant applicant = new Applicant();
+            Job job = await db.Jobs.FindAsync(id);
+            applicant.JobId = job.JobId;
+            applicant.JobTitle = job.Title;
+            return applicant;
+        }
+
+        public async Task Edit(Applicant applicant)
         {
             Applicant newEntry = db.Applicants.Find(applicant.ApplicantId);
             if (newEntry != null)
@@ -47,17 +56,17 @@ namespace Recruitment.Web.Services
                 //newEntry.Image = applicant.Image;
                 //newEntry.ImageMimeType = applicant.ImageMimeType;
 
-                db.SaveChanges();
+                await db.SaveChangesAsync();
+
             }
         }
-        
-        public async Task<Applicant> Delete(int id)
-        {
-            Applicant applicant = await db.Applicants.FindAsync(id);
-            db.Applicants.Remove(applicant);
-            await db.SaveChangesAsync();
-            return applicant;
-        }
+
+            public async Task Delete(int id)
+                {
+                    Applicant applicant = await db.Applicants.FindAsync(id);
+                    db.Applicants.Remove(applicant);
+                    await db.SaveChangesAsync();
+                }
         
         
 

@@ -55,15 +55,8 @@ namespace Recruitment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Applicant application = new Applicant();
-            Job job = await db.Jobs.FindAsync(id);
-            if (job == null)
-            {
-                return HttpNotFound();
-            }           
-            application.JobId = job.JobId;
-            application.JobTitle = title;
-            ViewBag.message = title;
+            var application = await arepo.GetJobDetails(id);
+            ViewBag.message = application.JobTitle;
             return View(application);           
         }
 
@@ -84,19 +77,20 @@ namespace Recruitment.Web.Controllers
                 //}
                 //db.Applicants.Add(application);
 
-                
+
                 //using (BinaryReader br = new BinaryReader(image.InputStream))
                 //{
                 //    application.Image = br.ReadBytes(image.ContentLength);
                 //}
                 //application.ImageContentType = image.ContentType;
-                db.Applicants.Add(application);
-                await db.SaveChangesAsync();
-                string messageSubject = $"Application Submission for {application.JobTitle}";
-                string messageBody = $"Hello Admin,\n A new application submitted for {application.JobTitle}";
-                Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
-                TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
-                return RedirectToAction("Index", "Manage");
+                var status = arepo.Create(application);
+                if (true)
+                {
+                    TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
+                    return RedirectToAction("Index", "Manage");
+                }
+                TempData["message"] = string.Format("There is something wrong with your application. Please try again");
+                return View(application);
             }
 
             return View(application);
@@ -109,7 +103,7 @@ namespace Recruitment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Applicant applicant = await db.Applicants.FindAsync(id);
+            Applicant applicant = await arepo.Details(id);
             if (applicant == null)
             {
                 return HttpNotFound();
@@ -126,8 +120,7 @@ namespace Recruitment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicant).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await arepo.Edit(applicant);
                 return RedirectToAction("Index");
             }
             return View(applicant);
@@ -140,7 +133,7 @@ namespace Recruitment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Applicant applicant = await db.Applicants.FindAsync(id);
+            Applicant applicant =  await arepo.Details(id);
             if (applicant == null)
             {
                 return HttpNotFound();
@@ -153,10 +146,8 @@ namespace Recruitment.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Applicant applicant = await db.Applicants.FindAsync(id);
-            db.Applicants.Remove(applicant);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            arepo.Delete(id);
+            return RedirectToAction("Index", "Manage");
         }
 
         protected override void Dispose(bool disposing)

@@ -6,12 +6,11 @@ namespace Recruitment.Domain.Interfaces
 {
     public interface IApplicantRepository
     {
-        IEnumerable<Applicant> Applicants { get; }
-
-       
-        Task<string> Create(int? jobId, Applicant applicant);
-        Task<Applicant> Delete(int id);
+        Task Edit(Applicant applicant);
+        IEnumerable<Applicant> Applicants { get; }       
+        Task<bool> Create(Applicant applicant);
+        Task Delete(int id);
         Task<Applicant> Details(int? id);
-        void Edit(Applicant applicant);
+        Task<Applicant> GetJobDetails(int? id);
     }
 }
