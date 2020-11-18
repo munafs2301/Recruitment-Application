@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Recruitment.Domain.Entities;
+using Recruitment.Domain.Interfaces;
 using Recruitment.Web.Models;
 using System.IO;
 using Recruitment.Web.Services;
@@ -18,11 +19,17 @@ namespace Recruitment.Web.Controllers
     public class ApplicantsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IApplicantRepository arepo;
+  
+        public ApplicantsController(IApplicantRepository repo)
+        {
+            this.arepo = repo;
+        }
 
         // GET: Applicants
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Applicants.ToListAsync());
+            return View( arepo.Applicants);
         }
 
         // GET: Applicants/Details/5
@@ -32,7 +39,8 @@ namespace Recruitment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Applicant applicant = await db.Applicants.FindAsync(id);
+
+            Applicant applicant = await arepo.Details(id);
             if (applicant == null)
             {
                 return HttpNotFound();
@@ -83,7 +91,6 @@ namespace Recruitment.Web.Controllers
                 //}
                 //application.ImageContentType = image.ContentType;
                 db.Applicants.Add(application);
-
                 await db.SaveChangesAsync();
                 string messageSubject = $"Application Submission for {application.JobTitle}";
                 string messageBody = $"Hello Admin,\n A new application submitted for {application.JobTitle}";

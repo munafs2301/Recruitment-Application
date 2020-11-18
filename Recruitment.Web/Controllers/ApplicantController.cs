@@ -29,15 +29,7 @@ namespace Recruitment.Web.Controllers
         // GET: Applicant/Details/5
         public async Task<ActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Applicant applicant = await arepo.Details(id);
-            if (applicant == null)
-            {
-                return HttpNotFound();
-            }
             return View(applicant);
         }
 
