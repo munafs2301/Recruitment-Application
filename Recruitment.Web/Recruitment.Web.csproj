@@ -257,6 +257,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Images\applicants.jpg" />
+    <Content Include="Images\Bezao-Image.jpg" />
     <Content Include="Images\jobs.jpg" />
     <Content Include="Images\recruit-logo.png" />
     <Content Include="Scripts\main.js" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Applicants\Create.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\ApplicationDetails.cshtml" />
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

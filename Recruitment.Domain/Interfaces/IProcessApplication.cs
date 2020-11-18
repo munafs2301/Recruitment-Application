@@ -12,5 +12,6 @@ namespace Recruitment.Domain.Interfaces
         IEnumerable<Applicant> Applications { get; }
         Task<Applicant> Details(int? id);
         Task Reject(int id);
+        Task Accept(int? id);
     }
 }

@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<Recruitment.Domain.Entities.Applicant>
 
 @{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
     ViewBag.Title = "Applications";
 }
 
 <h2>Applications</h2>
 
-<table class="table">
+<table class="table" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -46,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.JobTitle)
             </td>
             <td>
-                @Html.ActionLink("Details", "ApplicationDetails", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" })                
-                @Html.ActionLink("Reject", "Reject", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-danger" })
-                @Html.ActionLink("Accept", "Accept", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "ApplicationDetails", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-outline-info" }) |              
+                @Html.ActionLink("Reject", "Reject", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-outline-danger" }) |
+                @Html.ActionLink("Accept", "Accept", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-outline-success" })
             </td>
         </tr>
     }
@@ -57,5 +58,5 @@
 
 
 <div>
-    @Html.ActionLink("Back to Dashboard", "DashBoard", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to Dashboard", "DashBoard", null, htmlAttributes: new { @class = "btn btn-outline-primary" })
 </div>

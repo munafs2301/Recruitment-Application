@@ -25,7 +25,7 @@ namespace Recruitment.Web.Services
 
         public async Task Reject(int id)
         {
-            Applicant applicant = db.Applicants.FirstOrDefault(a => a.ApplicantId == id);
+            var applicant = await db.Applicants.FindAsync(id);
             string messageSubject = "RECRUIT: Job Update";
             string messageBody = $"Hello {applicant.FirstName},\n\nYour application for {applicant.JobTitle} was did not meet up to our requirements. But not to worry, we will inform you of the next job opening that suits your application.\n\nRegards,\nMarvelous(HRM)";
             Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
@@ -40,10 +40,12 @@ namespace Recruitment.Web.Services
         {
             var application = await db.Applicants.FindAsync(id);
             string messageSubject = "RECRUIT: Job Update";
-            string messageBody = $"Congratulations {application.FirstName},\nYou application for {application.JobTitle} was accepted. Please report to the headquarters for your interview on Monday.\nRegards,\nMarvelous(HRM)";
+            string messageBody = $"Congratulations {application.FirstName},\n\nYour application for {application.JobTitle} was accepted. Please report to the headquarters for your interview on Monday.\nNOTE: Come with your emails an evidence.\n\nRegards,\nMarvelous(HRM)";
             Email.SendEmail(application.EmailAddress, messageSubject, messageBody);
             db.Applicants.Remove(application);
             await db.SaveChangesAsync();
         }
+
+        
     }
 }

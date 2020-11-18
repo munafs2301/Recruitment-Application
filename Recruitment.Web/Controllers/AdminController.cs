@@ -20,21 +20,26 @@ namespace Recruitment.Web.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private readonly IJobRepository jrepo;
         private readonly IProcessApplication prepo;
-        private readonly IApplicantRepository arepo;
 
         public AdminController(IJobRepository jrepo, IProcessApplication prepo)
         {
             this.jrepo = jrepo;
             this.prepo = prepo;
-            this.arepo = arepo;
         }
 
-        // GET: Admin
+        //DashBoard
         public ActionResult DashBoard()
         {
             return View();
         }
 
+        #region Jobs Section
+        public ActionResult Jobs()
+        {
+            return View(jrepo.Jobs);
+        }
+
+        // GET: Admin
         // GET: Admin/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -127,17 +132,13 @@ namespace Recruitment.Web.Controllers
             await jrepo.Delete(id);
             return RedirectToAction("Jobs");
         }
+        #endregion
 
+        #region Applications section
         public async Task<ActionResult> Applications()
         {
             var applications = await db.Applicants.ToListAsync();
-            return View(applications);
-        }
-
-        public async Task<ActionResult> Jobs()
-        {
-            var jobs = await db.Jobs.ToListAsync();
-            return View(jobs);
+            return View(prepo.Applications);
         }
         
         public async Task<ActionResult> ApplicationDetails(int? id)
@@ -165,15 +166,12 @@ namespace Recruitment.Web.Controllers
         
         public async Task<ActionResult> Accept(int? id)
         {
-            var application = await db.Applicants.FindAsync(id);
-            string messageSubject = "RECRUIT: Job Update";
-            string messageBody = $"Congratulations {application.FirstName},\n\nYou application for {application.JobTitle} was accepted. Please report to the headquarters for your interview on Monday.\n\nRegards,\nMarvelous(HRM)";
-            Email.SendEmail(application.EmailAddress, messageSubject,  messageBody);
-            db.Applicants.Remove(application);
-            await db.SaveChangesAsync();
+            await prepo.Accept(id);
             return RedirectToAction("Applications");
         }
+        #endregion
 
+        #region Helpers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -182,5 +180,6 @@ namespace Recruitment.Web.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }

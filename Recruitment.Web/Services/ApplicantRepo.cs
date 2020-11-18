@@ -27,7 +27,8 @@ namespace Recruitment.Web.Services
             db.Applicants.Add(applicant);
             await db.SaveChangesAsync();
             string messageSubject = $"Application Submission for {applicant.JobTitle}";
-            string messageBody = $"Hello Admin,\n A new application submitted for {applicant.JobTitle}";
+            string messageBody = $"Hello Admin,\n\n A new application submitted for {applicant.JobTitle}";
+            // Email notification is sent to the Admin's Email: marvelousfrank5@gmail.com
             Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
             return true;
         }

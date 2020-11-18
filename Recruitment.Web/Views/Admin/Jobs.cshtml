@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Recruitment.Domain.Entities.Job>
 
 @{
-    ViewBag.Title = "Jobs";
+    ViewBag.Title = "Jobs"; 
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
 }
 
 <h2>Jobs</h2>
@@ -31,9 +33,9 @@
             </td>
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-warning" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-danger" })
+                @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-warning" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-danger" })
             </td>
         </tr>
     }
@@ -42,7 +44,7 @@
 
 
 <div>
-    @Html.ActionLink("Back to Dashboard", "DashBoard", null, htmlAttributes: new { @class = "btn btn-primary" })   
-    @Html.ActionLink("Add New Job", "Create", null, htmlAttributes: new { @class = "btn btn-success" })
+    @Html.ActionLink("Back to Dashboard", "DashBoard", null, htmlAttributes: new { @class = "btn btn-outline-primary" })   
+    @Html.ActionLink("Add New Job", "Create", null, htmlAttributes: new { @class = "btn btn-outline-success" })
 
 </div>
