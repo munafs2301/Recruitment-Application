@@ -46,14 +46,8 @@
                 @Html.DisplayFor(modelItem => item.JobTitle)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", "Applicants", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" }) |
-                @using (Html.BeginForm("Reject", "Admin"))
-                {
-                <div >
-                    @Html.HiddenFor(Model => item.JobTitle)
-                    <input type="submit" class="btn btn-danger" value="Reject" />
-                </div>
-                }
+                @Html.ActionLink("Details", "ApplicationDetails", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" })                
+                @Html.ActionLink("Reject", "Reject", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-danger" })
                 @Html.ActionLink("Accept", "Accept", "Admin", new { id = item.ApplicantId }, htmlAttributes: new { @class = "btn btn-success" })
             </td>
         </tr>

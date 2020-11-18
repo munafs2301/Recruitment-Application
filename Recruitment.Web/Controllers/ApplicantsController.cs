@@ -15,7 +15,7 @@ using Recruitment.Web.Services;
 
 namespace Recruitment.Web.Controllers
 {
-    [Authorize]
+    
     [Authorize(Roles = "Customer")]
     public class ApplicantsController : Controller
     {
@@ -33,6 +33,7 @@ namespace Recruitment.Web.Controllers
         }
 
         // GET: Applicants/Details/5
+       
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -150,14 +151,14 @@ namespace Recruitment.Web.Controllers
             return RedirectToAction("Index", "Manage");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
 //if (image != null && image.ContentLength > 0)

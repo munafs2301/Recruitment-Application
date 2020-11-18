@@ -61,14 +61,13 @@ namespace Recruitment.Web.Services
             }
         }
 
-            public async Task Delete(int id)
+        public async Task Delete(int id)
                 {
                     Applicant applicant = await db.Applicants.FindAsync(id);
                     db.Applicants.Remove(applicant);
                     await db.SaveChangesAsync();
                 }
-        
-        
 
+       
     }
 }

@@ -12,5 +12,6 @@ namespace Recruitment.Domain.Interfaces
         Task Delete(int id);
         Task<Applicant> Details(int? id);
         Task<Applicant> GetJobDetails(int? id);
+        
     }
 }

@@ -31,6 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Recruitment.Web">
       <HintPath>..\Recruitment.Web\bin\Recruitment.Web.dll</HintPath>
     </Reference>
@@ -52,6 +54,8 @@
     <Compile Include="Enums\Level.cs" />
     <Compile Include="Interfaces\IApplicantRepository.cs" />
     <Compile Include="Interfaces\IJobRepository.cs" />
+    <Compile Include="Interfaces\IProcessApplication.cs" />
+    <Compile Include="Interfaces\Process.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

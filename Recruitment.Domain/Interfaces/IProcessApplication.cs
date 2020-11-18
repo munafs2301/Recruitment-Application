@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Recruitment.Domain.Interfaces
 {
-    public interface IJobRepository
+    public interface IProcessApplication
     {
-        IEnumerable<Job> Jobs { get; }
-        Task<Job> Details(int? id);
-        Task Create(Job job);
-        Task Edit(Job job);
-        Task Delete(int id);
+        IEnumerable<Applicant> Applications { get; }
+        Task<Applicant> Details(int? id);
+        Task Reject(int id);
     }
 }

@@ -45,6 +45,7 @@ namespace Recruitment.Web.Services
 
             kernel.Bind<IJobRepository>().To<JobRepo>();
             kernel.Bind<IApplicantRepository>().To<ApplicantRepo>();
+            kernel.Bind<IProcessApplication>().To<ProcessApplication>();
         }
     }
 }
