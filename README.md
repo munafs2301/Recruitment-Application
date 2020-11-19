@@ -26,7 +26,3 @@ Features:
 
            Applicants when admin acts on his/her application 
 
-Expectations: Clean Coding, good architecture,  proper commenting, simplicity etc.
-
-
-I strongly recommend you implement all that you have been taught and what you have learnt so far on your own. Front end and back end.
