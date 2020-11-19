@@ -90,8 +90,6 @@ namespace Recruitment.Web.Controllers
                     TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
                     return RedirectToAction("Index", "Manage");
                 }
-                TempData["message"] = string.Format("There is something wrong with your application. Please try again");
-                return View(application);
             }
 
             return View(application);
@@ -147,7 +145,7 @@ namespace Recruitment.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            arepo.Delete(id);
+            await arepo.Delete(id);
             return RedirectToAction("Index", "Manage");
         }
 

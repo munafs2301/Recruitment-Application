@@ -70,7 +70,7 @@ namespace Recruitment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                jrepo.Create(job);
+                await jrepo.Create(job);
                 return RedirectToAction("Jobs");
             }
 
