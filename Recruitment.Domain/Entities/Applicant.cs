@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Recruitment.Domain.Entities
 {
@@ -42,6 +43,17 @@ namespace Recruitment.Domain.Entities
 
         [Display(Name = "Job Title")]
         public string JobTitle { get; set; }
+
+        public int ApplicationStatus { get; set; }
+        
+        public string UserId { get; set; }
+
+        [Display(Name = "Upload Image")]
+        public string ImagePath { get; set; }
+
+        [Display(Name = "Upload Resume")]
+        public string ResumePath { get; set; }
+
 
         //public byte[] Image { get; set; }
 

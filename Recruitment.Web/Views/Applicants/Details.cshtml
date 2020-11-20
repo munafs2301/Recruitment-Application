@@ -10,6 +10,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            Profile Image
+        </dt>
+
+        <dd>
+            <img src="~/ApplicantImages/@Model.ImagePath" alt="Image" />
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -65,7 +73,7 @@
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
 
-       
+
 
         <dt>
             @Html.DisplayNameFor(model => model.JobTitle)
@@ -73,6 +81,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+           Resume
+        </dt>
+
+        <dd>
+            <a href="~/ApplicantResumes/@Model.ResumePath" target="_blank">resume</a>
         </dd>
 
     </dl>

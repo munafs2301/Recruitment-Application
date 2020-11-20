@@ -234,6 +234,14 @@
     <Compile Include="Migrations\202011142216174_fileDataRemoval.Designer.cs">
       <DependentUpon>202011142216174_fileDataRemoval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011200732312_update.cs" />
+    <Compile Include="Migrations\202011200732312_update.Designer.cs">
+      <DependentUpon>202011200732312_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201759552_AcceptedApplications.cs" />
+    <Compile Include="Migrations\202011201759552_AcceptedApplications.Designer.cs">
+      <DependentUpon>202011201759552_AcceptedApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationViewModel.cs" />
@@ -332,6 +340,8 @@
     <Content Include="Views\Shared\AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ApplicantImages\" />
+    <Folder Include="ApplicantResumes\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +384,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011142216174_fileDataRemoval.resx">
       <DependentUpon>202011142216174_fileDataRemoval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011200732312_update.resx">
+      <DependentUpon>202011200732312_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201759552_AcceptedApplications.resx">
+      <DependentUpon>202011201759552_AcceptedApplications.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

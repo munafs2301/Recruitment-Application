@@ -66,10 +66,28 @@ namespace Recruitment.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Applicant application, byte[] image)
+        public async Task<ActionResult> Create(Applicant application, HttpPostedFileBase resume, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)                {
+                   
+                    string ImageName = Path.GetFileNameWithoutExtension(image.FileName);
+                    string ext = Path.GetExtension(image.FileName);
+                    ImageName = ImageName + DateTime.Now.ToString("yymmssfff") + ext;
+                    string physicalPath = Server.MapPath("~/ApplicantImages/" + ImageName);
+                    image.SaveAs(physicalPath);
+                    application.ImagePath = "~/ApplicantImages/" + ImageName ;                    
+                }
+                if (resume != null)                {
+                   
+                    string ResumeName = Path.GetFileName(resume.FileName);
+                    string ext = Path.GetExtension(resume.FileName);
+                    string physicalPath = Server.MapPath("~/ApplicantResumes/" + ResumeName);
+                    ResumeName = ResumeName + DateTime.Now.ToString("yymmssfff") + ext;
+                    resume.SaveAs(physicalPath);
+                    application.ResumePath = "~/ApplicantResumes/" + ResumeName;                    
+                }
                 //if (image != null)
                 //{
                 //    application.ImageContentType = image.ContentType;

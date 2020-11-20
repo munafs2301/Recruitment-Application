@@ -17,7 +17,7 @@ namespace Recruitment.Web.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+       
         private readonly IJobRepository jrepo;
         private readonly IProcessApplication prepo;
 
@@ -102,8 +102,7 @@ namespace Recruitment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(job).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await jrepo.Edit(job);
                 return RedirectToAction("Jobs");
             }
             return View(job);
@@ -135,20 +134,20 @@ namespace Recruitment.Web.Controllers
         #endregion
 
         #region Applications section
-        public async Task<ActionResult> Applications()
+        public ActionResult Applications()
         {
-            var applications = await db.Applicants.ToListAsync();
+            
             return View(prepo.Applications);
         }
         
-        public async Task<ActionResult> ApplicationDetails(int? id)
+        public ActionResult ApplicationDetails(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Applicant applicant = await prepo.Details(id);
+            Applicant applicant =  prepo.Details(id);
             if (applicant == null)
             {
                 return HttpNotFound();
@@ -172,14 +171,14 @@ namespace Recruitment.Web.Controllers
         #endregion
 
         #region Helpers
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
         #endregion
     }
 }

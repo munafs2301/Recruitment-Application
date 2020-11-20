@@ -10,7 +10,7 @@ namespace Recruitment.Domain.Interfaces
     public interface IProcessApplication
     {
         IEnumerable<Applicant> Applications { get; }
-        Task<Applicant> Details(int? id);
+        Applicant Details(int? id);
         Task Reject(int id);
         Task Accept(int? id);
     }
