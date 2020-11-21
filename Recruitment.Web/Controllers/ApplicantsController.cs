@@ -17,7 +17,7 @@ using Microsoft.AspNet.Identity;
 namespace Recruitment.Web.Controllers
 {
     
-    [Authorize(Roles = "Customer")]
+    [Authorize(Roles = "User")]
     public class ApplicantsController : Controller
     {
         private readonly IApplicantRepository arepo;
