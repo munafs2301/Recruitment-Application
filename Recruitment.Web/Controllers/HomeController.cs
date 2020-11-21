@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Recruitment.Domain.Entities;
 using Recruitment.Domain.Interfaces;
 using Recruitment.Web.Models;
+using Recruitment.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Recruitment.Web.Controllers
         public ActionResult Index(string categories, string search)
         {
             var category = categories;
-            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(3);
+            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(4);
             switch (category)
             {
                 case "Title":
@@ -85,30 +86,7 @@ namespace Recruitment.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var userId = User.Identity.GetUserId();
-                    var useremail = _userManager.FindById(userId).Email;
-                    var senderEmail = new MailAddress(useremail, useremail);
-                    var receiverEmail = new MailAddress("[ADMIN-EMAIL]", "Receiver");
-                    var password = "[ADMIN-PASSWORD]";
-                    var sub = subject;
-                    var body = message;
-                    var smtp = new SmtpClient
-                    {
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential(senderEmail.Address, password)
-                    };
-                    using (var mess = new MailMessage(senderEmail, receiverEmail)
-                    {
-                        Subject = subject,
-                        Body = body
-                    })
-                    {
-                        smtp.Send(mess);
-                    }
+                    Email.SendEmail("munaproject20@gmail.com", "munaproject20@gmail.com", subject, message);
                     return View();
                 }
             }

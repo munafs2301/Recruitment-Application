@@ -11,7 +11,7 @@
 @if (Model.Count() > 0)
 {
 <table class="table">
-    <tr>
+    <tr >
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -20,12 +20,14 @@
             @Html.DisplayNameFor(model => model.Company)
         </th>
 
-        <th>Action</th>
+        <th>Edit</th>
+        <th>Info</th>
+        <th>Delete</th>
     </tr>
 
     @foreach (var item in Model)
     {
-    <tr>
+    <tr >
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -35,8 +37,14 @@
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-warning" }) |
-            @Html.ActionLink("Details", "Details", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-info" }) |
+           
+                @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-warning" })
+           
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-info" })
+        </td>
+        <td>
             @Html.ActionLink("Delete", "Delete", new { id = item.JobId }, htmlAttributes: new { @class = "btn btn-outline-danger" })
         </td>
     </tr>

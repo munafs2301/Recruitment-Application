@@ -3,18 +3,18 @@
 <div style=" box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175); background-color:white; border: 1px dotted pink; border-radius: 20px; margin: 30px;padding: 20px; " class="">
     <h4 style="font-family:cursive;"><b>@Model.Title</b></h4>
     <hr />
-    <p>@Model.Company</p>
-    <p>@Model.Level Level</p>
-    <p>@Model.Location</p>
-    <p>@Model.Salary.ToString("c")</p>
-    <p>@Model.YearsExperienced experience</p>
-    <p>@Model.Type Job</p>
+    <p><strong>Company:</strong> @Model.Company</p>
+    <p><strong>Level: </strong>@Model.Level Level</p>
+    <p><strong>Location: </strong>@Model.Location</p>
+    <p><strong>Salary: </strong>@Model.Salary.ToString("c")</p>
+    <p><strong>Experience: </strong>@Model.YearsExperienced experience</p>
+    <p><strong>Type: </strong>@Model.Type Job</p>
     <hr />
-    <p>@Model.Description</p>
+    <p><strong>Job Description: </strong><br />@Model.Description</p>
     <hr />
 
     <div  class=" text-center">
 
-        @Html.ActionLink("Apply", "Create", "Applicants",new { id = Model.JobId, title = Model.Title}, htmlAttributes: new { @class = "btn btn-lg", @style = "background-color:#120227; color:white;" } ) 
+        @Html.ActionLink("Apply", "Create", "Applicants",new { id = Model.JobId, title = Model.Title}, htmlAttributes: new { @class = "btn btn-default ", @style = "background-color:#120227; color:white;" } ) 
     </div>
 </div>

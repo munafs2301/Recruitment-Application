@@ -8,21 +8,22 @@
     <title>@ViewBag.Title</title>
 </head>
 <body class="container" >
-    <nav class="navbar navbar-light bg-white fixed-top" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175);">
+    <nav class="navbar navbar-light bg-white fixed-top" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); ">
         <div class="container">
 
             <a class="navbar-brand" href="#">
                 <img src="~/Images/recruit-logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
                 <span style="color: purple;  "><b>RECRUIT</b></span>
             </a>
+            <span class=" nav navbar-nav pull-right" style=" font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+
+                @Html.Partial("_LoginPartial")
+            </span>
         </div>
-        <div class=" nav navbar-nav pull-right" style="display:flex;  font-family :'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
-            
-            @Html.Partial("_LoginPartial")
-        </div>
+       
         
     </nav>
-    <div style="padding: 80px;">
+    <div style="padding: 80px; ">
         @RenderBody()
     </div>
     <hr />

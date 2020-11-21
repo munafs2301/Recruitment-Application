@@ -4,13 +4,13 @@
 @{
     ViewBag.Title = "AllJobs";
 }
-    <div style="background-color: #f8d8f8; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted grey; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="background-color: #f8d8f8; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 1px dotted grey; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
         <div class="text-center">
             <h2 class="text-center" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><b>ALL JOBS</b></h2>
             @*<div style="background-color: none;">
                 <hr />
             </div>*@
-            <div style="padding:10px; background-color:white;">
+            <div style="padding:10px; background-color:white;  border-radius: 10px;">
                 @using (Html.BeginForm("AllJobs", "Home", FormMethod.Get))
             {
                 <div class="form-group">
@@ -38,7 +38,7 @@
         </div>
     </div>
 <hr />
-<div style=" background-color: #f8d8f8;  border: 2px dotted grey; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175);   border-radius: 10px; display:grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); grid-gap: 20px;">
+<div style=" background-color: #f8d8f8;  border: 1px dotted grey; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.175);   border-radius: 10px; display:grid; grid-template-columns: inherit; grid-gap: 20px;">
 
         @if (Model.Count() == 0)
             {
