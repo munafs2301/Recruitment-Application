@@ -12,6 +12,7 @@ using Recruitment.Domain.Interfaces;
 using Recruitment.Web.Models;
 using System.IO;
 using Recruitment.Web.Services;
+using Microsoft.AspNet.Identity;
 
 namespace Recruitment.Web.Controllers
 {
@@ -29,7 +30,8 @@ namespace Recruitment.Web.Controllers
         // GET: Applicants
         public ActionResult Index()
         {
-            return View( arepo.Applicants);
+            var userId = User.Identity.GetUserId();
+            return View( arepo.Applicants.Where(m => m.UserId == userId));
         }
 
         // GET: Applicants/Details/5
@@ -70,6 +72,8 @@ namespace Recruitment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                application.UserId = userId;
                 if (image != null)                {
                    
                     string ImageName = Path.GetFileNameWithoutExtension(image.FileName);

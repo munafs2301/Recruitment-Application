@@ -25,10 +25,10 @@ namespace Recruitment.Web.Services
         public async Task Reject(int id)
         {
             var applicant =  db.Applicants.Where(m => m.ApplicantId == id).FirstOrDefault();
+            applicant.ApplicationStatus = 2;
             string messageSubject = "RECRUIT: Job Update";
             string messageBody = $"Hello {applicant.FirstName},\n\nYour application for {applicant.JobTitle} was did not meet up to our requirements. But not to worry, we will inform you of the next job opening that suits your application.\n\nRegards,\nMarvelous(HRM)";
-            Email.SendEmail("marvelousfrank5@gmail.com", messageSubject, messageBody);
-            //await Email.SendMail(application.EmailAddress,  messageBody,messageSubject);
+            Email.SendEmail(applicant.EmailAddress,  messageSubject,messageBody);
             db.Applicants.Remove(applicant);
             await db.SaveChangesAsync();
         }       
@@ -36,11 +36,18 @@ namespace Recruitment.Web.Services
         public async Task Accept(int? id)
         {
             var applicant = db.Applicants.Where(m => m.ApplicantId == id).FirstOrDefault();
+            applicant.ApplicationStatus = 1;
             string messageSubject = "RECRUIT: Job Update";
             string messageBody = $"Congratulations {applicant.FirstName},\n\nYour application for {applicant.JobTitle} was accepted. Please report to the headquarters for your interview on Monday.\nNOTE: Come with your emails an evidence.\n\nRegards,\nMarvelous(HRM)";
             Email.SendEmail(applicant.EmailAddress, messageSubject, messageBody);
+            await db.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var applicant = db.Applicants.Where(m => m.ApplicantId == id).FirstOrDefault();
             db.Applicants.Remove(applicant);
             await db.SaveChangesAsync();
-        }        
+        }
     }
 }

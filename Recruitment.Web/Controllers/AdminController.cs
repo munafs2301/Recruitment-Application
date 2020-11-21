@@ -168,7 +168,27 @@ namespace Recruitment.Web.Controllers
             await prepo.Accept(id);
             return RedirectToAction("Applications");
         }
+        
+        public ActionResult AcceptedApplications()
+        {
+            return View(prepo.Applications);
+        }
+        
+        public ActionResult DeleteApplications()
+        {
+            return View(prepo.Applications);
+        }
+
+
+    
+        public async Task<ActionResult> DeleteApplication(int id)
+        {
+            await prepo.Delete(id);
+            return RedirectToAction("AcceptedApplications");
+        }
         #endregion
+
+
 
         #region Helpers
         //protected override void Dispose(bool disposing)

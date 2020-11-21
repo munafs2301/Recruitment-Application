@@ -23,8 +23,8 @@ namespace Recruitment.Web.Services
         }
 
         public async Task<bool> Create(Applicant applicant)
-        {          
-
+        {
+            applicant.ApplicationStatus = 0;
             db.Applicants.Add(applicant);
             await db.SaveChangesAsync();
             string messageSubject = $"Application Submission for {applicant.JobTitle}";

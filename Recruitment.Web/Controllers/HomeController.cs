@@ -1,4 +1,6 @@
-﻿using Recruitment.Domain.Entities;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Recruitment.Domain.Entities;
 using Recruitment.Domain.Interfaces;
 using Recruitment.Web.Models;
 using System;
@@ -14,6 +16,24 @@ namespace Recruitment.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IJobRepository repo;
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        public HomeController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
 
         public HomeController(IJobRepository repo)
         {
@@ -64,9 +84,11 @@ namespace Recruitment.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var senderEmail = new MailAddress("marvelousfrank5@gmail.com", "Marvelous");
-                    var receiverEmail = new MailAddress(receiver, "Receiver");
-                    var password = "m4crystfs1998";
+                    var userId = User.Identity.GetUserId();
+                    var useremail = _userManager.FindById(userId).Email;
+                    var senderEmail = new MailAddress(useremail, useremail);
+                    var receiverEmail = new MailAddress("[ADMIN-EMAIL]", "Receiver");
+                    var password = "[ADMIN-PASSWORD]";
                     var sub = subject;
                     var body = message;
                     var smtp = new SmtpClient
@@ -91,7 +113,7 @@ namespace Recruitment.Web.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Some Error";
+                ViewBag.Error = "Unable to send message. Some error Ocurred";
             }
             return View();
 

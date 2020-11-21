@@ -13,5 +13,7 @@ namespace Recruitment.Domain.Interfaces
         Applicant Details(int? id);
         Task Reject(int id);
         Task Accept(int? id);
+        Task Delete(int id);
+
     }
 }

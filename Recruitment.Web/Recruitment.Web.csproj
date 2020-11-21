@@ -264,6 +264,7 @@
     <Content Include="Content\Layout.css" />
     <Content Include="Images\applicants.jpg" />
     <Content Include="Images\Bezao-Image.jpg" />
+    <Content Include="Images\hired.jpg" />
     <Content Include="Images\jobs.jpg" />
     <Content Include="Images\recruit-logo.png" />
     <Content Include="Scripts\main.js" />
@@ -338,6 +339,7 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\ApplicationDetails.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\AcceptedApplications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicantImages\" />

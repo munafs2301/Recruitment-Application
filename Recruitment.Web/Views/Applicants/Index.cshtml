@@ -11,24 +11,47 @@
 </p>
 <table class="table">
     <tr>
-     
+
         <th>
             @Html.DisplayNameFor(model => model.JobTitle)
         </th>
         <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
-        
+
         <td>
             @Html.DisplayFor(modelItem => item.JobTitle)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-default"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" })
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" }) |
+
+
+            @if (item.ApplicationStatus == 0)
+            {
+            <div class="btn ">
+                Pending
+            </div>
+
+            }
+            elif (item.ApplicationStatus == 1)
+            {
+            <div class="btn btn-success ">
+                Accepted
+            </div>
+            }
+            else
+            {
+            <div class="btn btn-success ">
+                Rejected
+            </div>
+            }
+
         </td>
+
     </tr>
 }
-
+   
 </table>
