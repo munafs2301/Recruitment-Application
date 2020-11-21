@@ -4,9 +4,14 @@
 
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title</h2>
 
-@if (ViewBag.Error != null)
+    <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+
+<h2>@ViewBag.Title.ToUpper()</h2>
+
+<div style="background-color: none;">
+    <hr />
+</div>@if (ViewBag.Error != null)
 {
     <h2> @ViewBag.Error </h2>
 }
@@ -26,6 +31,9 @@
 <br />
 <br />
 <br />
+<div style="background-color: none;">
+<hr />
+</div>
 <h4><span><img src="~/Images/recruit-logo.png" alt="R" width="20" height="20" /></span><b>RECRUIT</b></h4>
 <address>
     
@@ -34,3 +42,5 @@
     <abbr title="Phone">P:</abbr>
     09036417646
 </address>
+    </div>
+

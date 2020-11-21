@@ -39,6 +39,7 @@ namespace Recruitment.Web.Controllers
         {
             this.repo = repo;
         }
+
         public ActionResult Index(string categories, string search)
         {
             var category = categories;
@@ -120,9 +121,25 @@ namespace Recruitment.Web.Controllers
          
         }
 
-        public ActionResult AllJobs()
+        public ActionResult AllJobs(string categories, string search)
         {
-            var model = repo.Jobs;
+            var category = categories;
+            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId);
+            switch (category)
+            {
+                case "Title":
+                    model = repo.Jobs.Where(m => m.Title.ToLower().Contains(search.ToLower()));
+                    break;
+                case "Company":
+                    model = repo.Jobs.Where(m => m.Company.ToLower().Contains(search.ToLower()));
+                    break;
+                case "Location":
+                    model = repo.Jobs.Where(m => m.Location.ToLower().Contains(search.ToLower()));
+                    break;
+                default:
+                    
+                    break;
+            }
             return View(model);
         }
 

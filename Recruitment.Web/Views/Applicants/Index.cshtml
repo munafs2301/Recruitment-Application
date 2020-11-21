@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
+    <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+
 <h2>Submitted Applications</h2>
 
-<p>
-    @Html.ActionLink("Back to Account", "Index", "Manage", null, htmlAttributes: new { @class = "btn btn-default", @style = " color: white; background-color: #120227;" })
-</p>
 <table class="table">
     <tr>
 
@@ -16,6 +15,7 @@
             @Html.DisplayNameFor(model => model.JobTitle)
         </th>
         <th>Actions</th>
+        <th>Application Status</th>
     </tr>
 
     @foreach (var item in Model) {
@@ -26,28 +26,38 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-default"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ApplicantId }, htmlAttributes: new { @class = "btn btn-info" }) 
 
 
+           
+
+        </td>
+        
+        <i class="fas fa-spinner"></i>
+        <td>
             @if (item.ApplicationStatus == 0)
             {
-            <div class="btn ">
-                Pending
+            <div class="text-capitalize text-warning" style="font-family:cursive; font-size: large;">
+
+
+                <i class="fas fa-spinner">Pending . . .</i>
+
+
             </div>
 
-            }
-            elif (item.ApplicationStatus == 1)
-            {
-            <div class="btn btn-success ">
-                Accepted
-            </div>
             }
             else
             {
-            <div class="btn btn-success ">
-                Rejected
+            <div class="text-capitalize text-success" style="font-family:cursive; font-size: large;">
+
+
+                <i class="fa fa-check-circle" aria-hidden="true"> Processed</i>
+
+
             </div>
             }
+
+
 
         </td>
 
@@ -55,3 +65,8 @@
 }
    
 </table>
+<p>
+    @Html.ActionLink("Back to Account", "Index", "Manage", null, htmlAttributes: new { @class = "btn btn-default", @style = " color: white; background-color: #120227;" })
+</p>
+    </div>
+

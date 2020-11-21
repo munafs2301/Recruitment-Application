@@ -4,6 +4,8 @@
     ViewBag.Title = "Create";
 }
 
+    <div style="padding: 50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;" >
+
     <h2>
         Application for <em>@ViewBag.message</em>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-center text-success" style="font-family:cursive; padding: 10px; font-size:x-large;"><b>@TempData["message"] </b></span>
 
@@ -115,6 +117,8 @@
 
 
 }
+    </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -56,6 +56,9 @@ namespace Recruitment.Web.Migrations
                 roleManager.Create(role);
 
             }
+
+
+            context.Jobs.AddOrUpdate();
         }
     }
     }

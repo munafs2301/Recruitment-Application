@@ -4,8 +4,8 @@
     ViewBag.Title = "Home";
 }
 
-<div style=" display: flex; flex-direction: column; display: -webkit-flex; justify-content: space-between">
-    <div class="text-center" style=" box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+<div style=" display: flex; flex-direction: column; display: -webkit-flex; justify-content: space-between;">
+    <div class="text-center" style=" background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink;  border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
         <div style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
             <h1><b> Welcome to RECRUIT</b></h1>
         </div>
@@ -31,7 +31,6 @@
                         <input type="submit" value="Search" class="btn btn-default " />                      
                     </span>
                 </div>
-
             }
         </div>
         <div>
@@ -39,9 +38,11 @@
         </div>
     </div>
 
-    <div style=" box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; " class="text-center">
+    <div style=" background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px;" class="text-center">
         <h2 style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Available Jobs</h2>
-        <div>
+     
+        <div style=" display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); grid-gap: 20px;">
+
             @if (Model.Count() == 0)
             {
                 <p> No match found? Search again.</p>
@@ -55,9 +56,10 @@
 
             }
         </div>
+       
     </div>
 
-    <div id="get-started" class="text-center" style="box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); margin-top: 20px; border-radius: 10px; border: px dotted pink; ">
+    <div id="get-started" class="text-center" style=" background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); margin-top: 20px; border-radius: 10px; border: px dotted pink; ">
         <h2 style="padding:10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Get Started</h2>
         <div style="display:flex; justify-content:space-evenly;">
             <div>

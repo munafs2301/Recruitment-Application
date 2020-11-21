@@ -4,6 +4,9 @@
     ViewBag.Title = "Details";
 }
 
+
+    <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+
 <h2>Application Details</h2>
 
 <div>
@@ -97,3 +100,5 @@
     @Html.ActionLink("Back to Applications", "Index", "Applicants", null, htmlAttributes: new { @class = "btn btn-default" })
     @Html.ActionLink("Edit", "Edit", new { id = Model.ApplicantId }, htmlAttributes: new { @class = "btn btn-default", @style = " color: white; background-color: #120227;" }) 
 </p>
+    </div>
+
