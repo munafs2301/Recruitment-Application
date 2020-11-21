@@ -12,16 +12,16 @@ namespace Recruitment.Web.Services
 {
     public class Email
     {
-        public static string SendEmail(string receiver, string subject, string message)
+        public static string SendEmail(string receiver, string sender, string subject, string message)
         {
 
             try
                 {
                   
                     
-                            var senderEmail = new MailAddress("marvelousfrank5@gmail.com", "Marvelous");
-                            var receiverEmail = new MailAddress(receiver, "Receiver");
-                            var password = "m4crystfs1998";
+                            var senderEmail = new MailAddress(sender, "RECRUIT");
+                            var receiverEmail = new MailAddress(receiver, "User");
+                            var password = "Muna20Project";
                             var sub = subject;
                             var body = message;
                             var smtp = new SmtpClient
@@ -40,9 +40,10 @@ namespace Recruitment.Web.Services
                                             })
                                             {
                                                 smtp.Send(mess);
-                                            }
+                                  }
                                             return "Email sent successfully";
                                     
+            
             
             }
             catch (Exception)

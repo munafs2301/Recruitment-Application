@@ -13,6 +13,10 @@
             <hr />
             <div class="well" style="display: grid; grid-template-columns:1fr 1fr; grid-gap:20px;">
                 <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <p class="text-center" style="font-size:large;"><strong>Submitted Applications</strong>   </p>
+                    @Html.ActionLink("View", "Index", "Applicants", null, htmlAttributes: new { @class = "btn btn-default", @style = "color:white; background-color:#120227;" })
+                </div>
+                <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
                     <p class="text-center" style="font-size:large;"><strong>Password Settings</strong>   </p>
 
                     @if (Model.HasPassword)
@@ -26,13 +30,9 @@
 
                 </div>
                 
-                <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
-                    <p class="text-center" style="font-size:large;"><strong>Submitted Applications</strong>   </p>
-                    @Html.ActionLink("View", "Index", "Applicants", null, htmlAttributes: new { @class = "btn btn-default", @style = "color:white; background-color:#120227;" })
-                </div>
                    
 
-                </div>
+            </div>
 
         </div>
         </div>

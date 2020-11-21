@@ -26,9 +26,9 @@ namespace Recruitment.Web.Services
         {
             var applicant =  db.Applicants.Where(m => m.ApplicantId == id).FirstOrDefault();
             applicant.ApplicationStatus = 2;
-            string messageSubject = "RECRUIT: Job Update";
+            string messageSubject = "Job Application Update";
             string messageBody = $"Hello {applicant.FirstName},\n\nYour application for {applicant.JobTitle} was did not meet up to our requirements. But not to worry, we will inform you of the next job opening that suits your application.\n\nRegards,\nMarvelous(HRM)";
-            Email.SendEmail(applicant.EmailAddress,  messageSubject,messageBody);
+            Email.SendEmail(applicant.EmailAddress, "munaproject20@gmail.com",  messageSubject,messageBody);
             db.Applicants.Remove(applicant);
             await db.SaveChangesAsync();
         }       
@@ -37,9 +37,9 @@ namespace Recruitment.Web.Services
         {
             var applicant = db.Applicants.Where(m => m.ApplicantId == id).FirstOrDefault();
             applicant.ApplicationStatus = 1;
-            string messageSubject = "RECRUIT: Job Update";
+            string messageSubject = "Job Application Update";
             string messageBody = $"Congratulations {applicant.FirstName},\n\nYour application for {applicant.JobTitle} was accepted. Please report to the headquarters for your interview on Monday.\nNOTE: Come with your emails an evidence.\n\nRegards,\nMarvelous(HRM)";
-            Email.SendEmail(applicant.EmailAddress, messageSubject, messageBody);
+            Email.SendEmail(applicant.EmailAddress, "munaproject20@gmail.com", messageSubject, messageBody);
             await db.SaveChangesAsync();
         }
 
