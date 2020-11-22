@@ -34,8 +34,7 @@ namespace Recruitment.Web.Controllers
             return View( arepo.Applicants.Where(m => m.UserId == userId));
         }
 
-        // GET: Applicants/Details/5
-       
+        // GET: Applicants/Details/5       
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -74,14 +73,16 @@ namespace Recruitment.Web.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 application.UserId = userId;
-                if (image != null)                {
+                if (image != null)       
+                 {
                    
                     string ImageName = Path.GetFileNameWithoutExtension(image.FileName);
                     string ext = Path.GetExtension(image.FileName);
-                    ImageName = ImageName + DateTime.Now.ToString("yymmssfff") + ext;
+                    ImageName = ImageName + DateTime.Now.ToString("yymmssfff") + ext; 
+                    application.ImagePath = "~/ApplicantImages/" + ImageName;
+
                     string physicalPath = Server.MapPath("~/ApplicantImages/" + ImageName);
                     image.SaveAs(physicalPath);
-                    application.ImagePath = "~/ApplicantImages/" + ImageName ;                    
                 }
                 if (resume != null)                {
                    
@@ -179,15 +180,12 @@ namespace Recruitment.Web.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+
+        public FileResult GetReport()
+        {
+            string ReportURL = "~/ApplicantResumes/IEEE_NIGERCON_Conference_Paper_Template.docx205220582.docx";
+            byte[] FileBytes = System.IO.File.ReadAllBytes(ReportURL);
+            return File(FileBytes, "application/pdf");
+        }
     }
 }
-//if (image != null && image.ContentLength > 0)
-//{
-
-//    using (var reader = new System.IO.BinaryReader(image.InputStream))
-//    {
-//        application.ImageContentType = image.ContentType;
-//        application.Image = reader.ReadBytes(image.ContentLength);
-//    }
-
-//}

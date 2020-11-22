@@ -51,6 +51,8 @@ namespace Recruitment.Domain.Entities
         [Display(Name = "Upload Image")]
         public string ImagePath { get; set; }
 
+      
+
         [Display(Name = "Upload Resume")]
         public string ResumePath { get; set; }
 

@@ -18,7 +18,7 @@
 
         <dd>
            
-            <img src=@Model.ImagePath alt="profile image" class="img-thumbnail"/>
+            <img src="@Url.Content(Model.ImagePath)" alt="profile image" class="img-thumbnail"/>
         </dd>
 
         <dt>
@@ -87,13 +87,13 @@
             @Html.DisplayFor(model => model.JobTitle)
         </dd>
 
-        <dt>
+        @*<dt>
            Resume
         </dt>
 
         <dd>
-            <a href="#" target="_blank">resume</a>
-        </dd>
+            <a href="@Url.Content(Model.ResumePath)" target="_blank">resume</a>
+        </dd>*@
 
     </dl>
 </div>
