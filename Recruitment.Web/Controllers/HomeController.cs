@@ -41,7 +41,7 @@ namespace Recruitment.Web.Controllers
             this.repo = repo;
         }
 
-        public ActionResult Index(string categories, string search)
+        public ViewResult Index(string categories, string search)
         {
             var category = categories;
             IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(4);

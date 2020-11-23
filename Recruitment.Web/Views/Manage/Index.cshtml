@@ -4,7 +4,10 @@
 }
 
     <div style="padding:50px; background-color: white; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.175); border: 2px dotted pink; margin-top: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
-        <span class="text-center text-success" style="font-family:cursive; padding: 10px; font-size:larger;"><b>@TempData["message"] </b></span><br />
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success" style="font-family:cursive; padding: 10px; font-size:larger;">@TempData["message"]</div>
+        }
         <span class="text-success" style="padding: 10px;">@ViewBag.StatusMessage</span>
 
         <h2>@ViewBag.Title.ToUpper() ACCOUNT</h2>
@@ -20,19 +23,19 @@
                     <p class="text-center" style="font-size:large;"><strong>Password Settings</strong>   </p>
 
                     @if (Model.HasPassword)
-                {
-                    @Html.ActionLink("Change your password", "ChangePassword", null, htmlAttributes: new { @class = "btn btn-default", @style = "color:white; background-color:#120227;" })
-                }
-                else
-                {
-                    @Html.ActionLink("Create", "SetPassword")
-                }
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword", null, htmlAttributes: new { @class = "btn btn-default", @style = "color:white; background-color:#120227;" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
 
                 </div>
-                
-                   
+
+
 
             </div>
 
         </div>
-        </div>
+    </div>

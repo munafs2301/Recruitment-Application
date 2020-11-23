@@ -93,21 +93,8 @@ namespace Recruitment.Web.Controllers
                     resume.SaveAs(physicalPath);
                     application.ResumePath = "~/ApplicantResumes/" + ResumeName;                    
                 }
-                //if (image != null)
-                //{
-                //    application.ImageContentType = image.ContentType;
-                //    application.Image = new byte[image.InputStream.Length];
-                //    image.InputStream.Read(application.Image, 0, image.ContentLength);
-                //}
-                //db.Applicants.Add(application);
-
-
-                //using (BinaryReader br = new BinaryReader(image.InputStream))
-                //{
-                //    application.Image = br.ReadBytes(image.ContentLength);
-                //}
-                //application.ImageContentType = image.ContentType;
-                var status = await arepo.Create(application);
+               
+                await arepo.Create(application);
                 if (true)
                 {
                     TempData["message"] = string.Format("Your application for {0} has been submitted. ", application.JobTitle);
