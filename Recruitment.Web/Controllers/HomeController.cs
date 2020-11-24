@@ -44,7 +44,7 @@ namespace Recruitment.Web.Controllers
         public ViewResult Index(string categories, string search)
         {
             var category = categories;
-            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(4);
+            IEnumerable<Job> model = repo.Jobs.OrderByDescending(m => m.JobId).Take(6);
             switch (category)
             {
                 case "Title":
