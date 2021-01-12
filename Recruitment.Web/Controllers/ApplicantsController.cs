@@ -78,20 +78,21 @@ namespace Recruitment.Web.Controllers
                    
                     string ImageName = Path.GetFileNameWithoutExtension(image.FileName);
                     string ext = Path.GetExtension(image.FileName);
-                    ImageName = ImageName + DateTime.Now.ToString("yymmssfff") + ext; 
+                    ImageName = ImageName + DateTime.Now.ToString("yymmssfff") + ext;
                     application.ImagePath = "~/ApplicantImages/" + ImageName;
-
                     string physicalPath = Server.MapPath("~/ApplicantImages/" + ImageName);
                     image.SaveAs(physicalPath);
                 }
-                if (resume != null)                {
-                   
-                    string ResumeName = Path.GetFileName(resume.FileName);
+                if (resume != null)       
+                {
+                   string ResumeName = Path.GetFileNameWithoutExtension(resume.FileName);
                     string ext = Path.GetExtension(resume.FileName);
-                    string physicalPath = Server.MapPath("~/ApplicantResumes/" + ResumeName);
-                    ResumeName = ResumeName + DateTime.Now.ToString("yymmssfff") + ext;
-                    resume.SaveAs(physicalPath);
-                    application.ResumePath = "~/ApplicantResumes/" + ResumeName;                    
+                    ResumeName += DateTime.Now.ToString("yymmssfff") + ext; 
+                    application.ResumePath = "~/ApplicantResumes/" + ResumeName;
+
+                    ResumeName = Path.Combine(Server.MapPath("~/ApplicantResumes/"), ResumeName);
+                    resume.SaveAs(ResumeName);
+
                 }
                
                 await arepo.Create(application);

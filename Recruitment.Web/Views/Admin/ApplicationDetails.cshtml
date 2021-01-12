@@ -73,6 +73,14 @@
             <dd>
                 @Html.DisplayFor(model => model.PhoneNumber)
             </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.ResumePath)
+            </dt>
+
+            <dd>
+                <a class="btn btn-info"  href="@Url.Content(Model.ResumePath)" target="_blank" >Open File</a>
+            </dd>
 
 
 
